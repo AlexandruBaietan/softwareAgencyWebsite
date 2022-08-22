@@ -4,7 +4,7 @@ import Image from "next/image";
 import styles from "../styles/Home.module.css";
 import Masthead from "components/Masthead";
 import AboutUs from "components/AboutUs";
-
+import Skills from "components/Skills";
 
 const Home: NextPage = () => {
   return (
@@ -16,6 +16,7 @@ const Home: NextPage = () => {
       </Head>
       <Masthead />
       <AboutUs />
+      <Skills />
     </div>
   );
 };

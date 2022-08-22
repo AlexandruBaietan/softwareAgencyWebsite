@@ -1,9 +1,32 @@
 import React, { useState, useRef, useContext, useCallback } from "react";
 import Image from "next/image";
+import { ScrollContext } from "./utils/scroll-observer";
 
 const Masthead: React.FC = () => {
+  const refContainer = useRef<HTMLDivElement>(null);
+  const { scrollY } = useContext(ScrollContext);
+  const [imageLoaded, setImageLoaded] = useState(false);
+
+  let progress = 0;
+
+  const { current: elContainer } = refContainer;
+
+  if (elContainer) {
+    progress = Math.min(1, scrollY / elContainer.clientHeight);
+  }
+
+  const handleImageLoaded = useCallback(() => {
+    setImageLoaded(true);
+  }, []);
+
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center">
+    <div
+      ref={refContainer}
+      style={{
+        transform: `translateY(-${progress * 20}vh)`,
+      }}
+      className="min-h-screen flex flex-col items-center justify-center sticky top-0 -z-10"
+    >
       <video
         autoPlay
         loop
@@ -13,7 +36,11 @@ const Masthead: React.FC = () => {
       >
         <source src="/assets/video-background.mp4" type="video/mp4" />
       </video>
-      <div className={`flex-grow-0 pt-10 transition-opacity duration-1000`}>
+      <div
+        className={`flex-grow-0 pt-10 transition-opacity duration-1000 ${
+          imageLoaded ? "opacity-100 " : "opacity-0"
+        }`}
+      >
         <Image src="/vercel.svg" width={188 / 3} height={105 / 3} alt="logo" />
       </div>
       <div
@@ -25,12 +52,17 @@ const Masthead: React.FC = () => {
           <span>App development,</span> <span>done right.</span>
         </h2>
       </div>
-      <div className="flex-grow-0 pb-20 md:pb-10 transition-all duration-1000">
+      <div
+        className={`flex-grow-0 pb-20 md:pb-10 transition-all duration-1000 ${
+          imageLoaded ? "opacity-100" : "opacity-0 -translate-y-10"
+        }`}
+      >
         <Image
           src="/assets/arrowDown.png"
           width={188 / 3}
           height={185 / 3}
           alt="scroll down"
+          onLoad={handleImageLoaded}
         />
       </div>
     </div>

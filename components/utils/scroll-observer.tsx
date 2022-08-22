@@ -4,11 +4,11 @@ interface ScrollValue {
   scrollY: number;
 }
 
-export const ScollContext = React.createContext<ScrollValue>({
+export const ScrollContext = React.createContext<ScrollValue>({
   scrollY: 0,
 });
 
-const ScrollObserver: React.FC = ({ children }) => {
+const ScrollObserver: React.FC<{ children: JSX.Element }> = ({ children }) => {
   const [scrollY, setScrollY] = useState(0);
 
   const handleScroll = useCallback(() => setScrollY(window.scrollY), []);
@@ -18,9 +18,9 @@ const ScrollObserver: React.FC = ({ children }) => {
     return () => document.removeEventListener("scroll", handleScroll);
   }, [handleScroll]);
   return (
-    <ScollContext.Provider value={{ scrollY }}>
+    <ScrollContext.Provider value={{ scrollY }}>
       {children}
-    </ScollContext.Provider>
+    </ScrollContext.Provider>
   );
 };
 
