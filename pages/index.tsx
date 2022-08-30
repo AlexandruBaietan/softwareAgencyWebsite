@@ -5,6 +5,7 @@ import styles from "../styles/Home.module.css";
 import Masthead from "components/Masthead";
 import AboutUs from "components/AboutUs";
 import Skills from "components/Skills";
+import Works from "components/Works";
 
 const Home: NextPage = () => {
   return (
@@ -17,6 +18,7 @@ const Home: NextPage = () => {
       <Masthead />
       <AboutUs />
       <Skills />
+      <Works />
     </div>
   );
 };
