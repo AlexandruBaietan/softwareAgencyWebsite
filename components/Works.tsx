@@ -1,6 +1,13 @@
 import React from "react";
-import { TileWrapper, TileBackground, TileContent, Tile } from "./Tile";
-import { WorkBackground } from "./Work";
+import { TileWrapper, TileBackground, TileContent, Tile } from "./works/Tile";
+import {
+  WorkBackground,
+  WorkContainer,
+  WorkLeft,
+  WorkRight,
+  WorkLink,
+} from "./works/Work";
+import Image from "next/image";
 
 const Works = () => {
   return (
@@ -12,18 +19,72 @@ const Works = () => {
         <Tile
           page={0}
           renderContent={({ progress }) => (
-            <span className="text-9xl">Foo {progress}</span>
+            <WorkContainer>
+              <WorkLeft progress={progress}>
+                <div>We built</div>
+                <div className="text-4xl md: text-5xl font-semibold track-tight">
+                  <WorkLink href="https://www.google.com/">
+                    Pink Pands&apos;s app
+                  </WorkLink>
+                </div>
+              </WorkLeft>
+              <WorkRight progress={progress}>
+                <Image
+                  src="/assets/iphone.jfif"
+                  width={840}
+                  height={900}
+                  alt="Pink panda"
+                  layout="responsive"
+                />
+              </WorkRight>
+            </WorkContainer>
           )}
         ></Tile>
         <Tile
           page={1}
           renderContent={({ progress }) => (
-            <span className="text-9xl">Bar {progress}</span>
+            <WorkContainer>
+              <WorkLeft progress={progress}>
+                <div>We made</div>
+                <div className="text-4xl md: text-5xl font-semibold track-tight">
+                  Steakwallet&nbsp; faster
+                </div>
+              </WorkLeft>
+              <WorkRight progress={progress}>
+                <Image
+                  src="/assets/iphone.jfif"
+                  width={840}
+                  height={900}
+                  alt="Steakwallet"
+                  layout="responsive"
+                />
+              </WorkRight>
+            </WorkContainer>
+          )}
+        ></Tile>
+        <Tile
+          page={2}
+          renderContent={({ progress }) => (
+            <WorkContainer>
+              <WorkLeft progress={progress}>
+                <div>We helped</div>
+                <div className="text-4xl md: text-5xl font-semibold track-tight">
+                  Showtime&nbsp;ship faster
+                </div>
+              </WorkLeft>
+              <WorkRight progress={progress}>
+                <Image
+                  src="/assets/iphone.jfif"
+                  width={840}
+                  height={900}
+                  alt="Steakwallet"
+                  layout="responsive"
+                />
+              </WorkRight>
+            </WorkContainer>
           )}
         ></Tile>
       </TileContent>
-      <TileContent>Bar</TileContent>
-      <TileContent>Test</TileContent>
     </TileWrapper>
   );
 };

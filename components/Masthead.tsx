@@ -1,6 +1,6 @@
 import React, { useState, useRef, useContext, useCallback } from "react";
 import Image from "next/image";
-import { ScrollContext } from "./utils/scroll-observer";
+import { ScrollContext } from "../utils/scroll-observer";
 
 const Masthead: React.FC = () => {
   const refContainer = useRef<HTMLDivElement>(null);
