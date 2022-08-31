@@ -23,8 +23,14 @@ const AboutUs: React.FC = () => {
           />
           <Member
             id="0"
-            name="Alex"
-            socialId="@Baietan"
+            name="Marius"
+            socialId="@Marius"
+            link="https://github.com/alexandrubaietan"
+          />
+          <Member
+            id="0"
+            name="Ghita"
+            socialId="@Ghita"
             link="https://github.com/alexandrubaietan"
           />
         </div>

@@ -8,6 +8,7 @@ import Skills from "components/Skills";
 import Works from "components/Works";
 import TrustedBy from "components/TrustedBy";
 import ContactUs from "components/ContactUs";
+import Footer from "components/Footer";
 
 const Home: NextPage = () => {
   return (
@@ -23,6 +24,7 @@ const Home: NextPage = () => {
       <Works />
       <TrustedBy />
       <ContactUs />
+      <Footer />
     </div>
   );
 };
